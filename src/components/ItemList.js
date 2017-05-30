@@ -4,12 +4,13 @@ import ItemDetail from './ItemDetail';
 
 import ItemListHeader from './partials/ItemListHeader'
 import ItemListHeaderMini from './partials/ItemListHeaderMini'
+import Hr from './partials/Hr'
 
 class ItemList extends Component {
     state = { items: []};
 
     componentWillMount(){
-            fetch ('https://camperbnb.herokuapp.com/api/campgrounds/')
+            fetch ('https://camperbnb.herokuapp.com/api/search')
             .then ((response) => response.json ())
             .then ((responseData) => {
             this.setState ({items: responseData})
@@ -25,6 +26,7 @@ class ItemList extends Component {
     render () {
         return (
             <ScrollView>
+                <Hr/>
                 <ItemListHeader>{'Campgrounds'}</ItemListHeader>
                 <ItemListHeaderMini>There are {this.state.items.count} available campgrounds</ItemListHeaderMini>
                 {this.renderItems()}

@@ -16,7 +16,7 @@ const ItemDetail = ({item}) => {
                         overlay
                     />
                     <Card.Body>
-                        <CardHeader>{name}</CardHeader>
+                        <CardHeader>{name} - {location}</CardHeader>
                         <CardHeaderMini>{price}</CardHeaderMini>
                         <CardDescription limit={50}>{description}</CardDescription>
                     </Card.Body>
