@@ -1,18 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View} from 'react-native';
 
 const CardDescription = (props) => {
     return (
-        <Text style={styles.CardDescriptionStyle}>{props.children}.substr(0,{props.limit})</Text>
-
-        // <% if (campground.name) {  %>
-		// 			<%= (campground.name).substr(0,18) %>
-		// 			<% if ((campground.name).length > 18) { %>
-		// 				<span>...</span>
-		// 			<% } %>	
-		// 		<% } %>	
-
-        // props.limit
+        <View>
+            <Text style={styles.CardDescriptionStyle}>{props.children.substr(0,props.characterLimit)}</Text>
+            {(props.children.length > props.characterLimit) ? <Text>...</Text> : null}
+        </View>  
     )
 }
 

@@ -10,7 +10,7 @@ const CardHeader= (props) => {
 const styles= {
     CardHeaderStyle:{
         fontSize: 20,
-        marginTop: 15,
+        marginTop: 4,
         marginBottom:5,
         fontWeight:'bold',
         fontFamily: 'Iowan Old Style'

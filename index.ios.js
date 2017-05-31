@@ -8,6 +8,9 @@ import Header from './src/components/Header';
 import Search from './src/components/Search';
 import FadeInView from './src/components/FadeIn'
 import Hr from './src/components/partials/Hr'
+import ItemList from './src/components/ItemList';
+
+const SideMenu = require('react-native-side-menu');
 
 //create a component
 const App = () => (
@@ -15,8 +18,22 @@ const App = () => (
     <Header headerText={'Camperbnb'}/>
     <Hr/>
     <Search></Search>
+    <ItemList></ItemList>
   </FadeInView>
 );
+
+class Application extends React.Component {
+  render() {
+    const menu = <Menu navigator={navigator}/>;
+
+    return (
+      <SideMenu menu={menu}>
+        <ContentView/>
+      </SideMenu>
+    );
+  }
+}
+
 
 
 //render it to the device

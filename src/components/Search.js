@@ -5,10 +5,10 @@ import Button from './Button';
 import ItemList from './ItemList';
 
 class Search extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {text: ''};
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {text: ''};
+    // }
 
     clearText(fieldName) {
         this.refs[fieldName].setNativeProps({text: ''});
@@ -23,7 +23,6 @@ class Search extends Component {
                     style={styles.SearchInput}
                     placeholder="Search By Location"
                     ref={'searchInput'}
-                    onChangeText={(text) => this.setState({text})}
                     tintColor={'white'}
                     />
                     <TouchableOpacity style={styles.buttonStyle} onPress={() => this.clearText('searchInput')} 
@@ -33,11 +32,10 @@ class Search extends Component {
                             Clear
                         </Text>
                     </TouchableOpacity>
-                    {/*<Text style={{padding: 10, fontSize: 42}}>
+                    {/*<Text style={{padding: 10, fontSize: 42}}>     onChangeText={(text) => this.setState({text})}
                         {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
                     </Text>*/}
                 </View>
-                <ItemList></ItemList>
             </View>
         );
     }
