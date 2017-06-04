@@ -9,6 +9,7 @@ import Search from './src/components/Search';
 import FadeInView from './src/components/FadeIn'
 import Hr from './src/components/partials/Hr'
 import ItemList from './src/components/ItemList';
+import Avatar from './src/components/Avatar';
 
 const SideMenu = require('react-native-side-menu');
 
@@ -17,8 +18,9 @@ const App = () => (
   <FadeInView style={{width: null, height: 400, flex:1}}>
     <Header headerText={'Camperbnb'}/>
     <Hr/>
-    <Search></Search>
+    {/*<Search></Search>*/}
     <ItemList></ItemList>
+    <Avatar></Avatar>
   </FadeInView>
 );
 

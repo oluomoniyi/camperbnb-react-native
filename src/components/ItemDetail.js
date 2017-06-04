@@ -13,10 +13,10 @@ const ItemDetail = ({item}) => {
             <Card style={{overflow: 'hidden'}}>
                 <Card.Media
                     image ={<Image source={require('../assets/img/camp1.jpg')}/>}
-                    overlay
+                    overlay={true}
                 />
+                <CardHighlight>{location}</CardHighlight>
                 <Card.Body>
-                    <CardHighlight>{location}</CardHighlight>
                     <CardHeader>{name}</CardHeader>
                     <CardHeaderMini>{price}</CardHeaderMini>
                     <CardDescription characterLimit={300}>{description}</CardDescription>

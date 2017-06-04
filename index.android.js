@@ -1,53 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+//code in here
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
 
-export default class camperbnb extends Component {
+// import library to help create a component
+import React from 'react';
+import { AppRegistry} from 'react-native';
+import Header from './src/components/Header';
+import Search from './src/components/Search';
+import FadeInView from './src/components/FadeIn'
+import Hr from './src/components/partials/Hr'
+import ItemList from './src/components/ItemList';
+import Avatar from './src/components/Avatar';
+
+const SideMenu = require('react-native-side-menu');
+
+//create a component
+const App = () => (
+  <FadeInView style={{width: null, height: 400, flex:1}}>
+    <Header headerText={'Camperbnb'}/>
+    <Hr/>
+    {/*<Search></Search>*/}
+    <ItemList></ItemList>
+    <Avatar></Avatar>
+  </FadeInView>
+);
+
+class Application extends React.Component {
   render() {
+    const menu = <Menu navigator={navigator}/>;
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <SideMenu menu={menu}>
+        <ContentView/>
+      </SideMenu>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
-AppRegistry.registerComponent('camperbnb', () => camperbnb);
+
+//render it to the device
+AppRegistry.registerComponent('camperbnb', () => App);

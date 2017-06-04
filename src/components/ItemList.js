@@ -18,7 +18,7 @@ class ItemList extends Component {
         fetch ('https://camperbnb.herokuapp.com/api/search/')
         .then ((response) => response.json ())
         .then ((responseData) => {
-            this.setState ({items: responseData.campgrounds.slice(0,5)})  
+            this.setState ({items: responseData.campgrounds.slice(0,20)})  
         })
         .catch(function(error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
