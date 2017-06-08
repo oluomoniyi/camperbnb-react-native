@@ -8,7 +8,17 @@ class Search extends Component {
     // constructor(props) {
     //     super(props);
     //     this.state = {text: ''};
-    // }
+    // } will add state later
+
+    static navigationOptions = {
+        tabBarLabel: '',
+        tabBarIcon: ({ tintColor }) => (
+        <Image
+            source={require('../assets/img/ic_search.png')}
+            style={[styles.icon, {tintColor: tintColor}]}
+        />
+        ),
+    };
 
     clearText(fieldName) {
         this.refs[fieldName].setNativeProps({text: ''});

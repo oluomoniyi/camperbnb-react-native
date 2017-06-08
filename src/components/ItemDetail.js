@@ -1,10 +1,12 @@
 import React from 'react';
-import { Text, Image, TouchableOpacity} from 'react-native';
+import { Text, Image, TouchableOpacity, Stylesheet} from 'react-native';
 import { Card } from 'react-native-material-design';
 import CardDescription from './partials/CardDescription'
 import CardHeader from './partials/CardHeader'
 import CardHighlight from './partials/CardHighlight'
 import CardHeaderMini from './partials/CardHeaderMini'
+import { defaultStyles } from '../styles';
+
 
 const ItemDetail = ({item}) => {
     const {name, image, price, description, location} = item
