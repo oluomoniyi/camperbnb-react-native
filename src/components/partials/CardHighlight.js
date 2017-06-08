@@ -14,12 +14,13 @@ const CardHighlight = (props) => {
 const styles = {
     CardHighlighttextstyle:{
         color: '#fff',
-        fontSize: 12
+        fontSize: 12,
+        padding:10
     },
     CardHighlightstyle:{
         backgroundColor: 'rgba(231, 76, 60, 0.7)',
         position: 'relative',
-        bottom: 80,
+        bottom: 30,
         left: 0,
         right: 0,
     }
