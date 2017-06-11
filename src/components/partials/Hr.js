@@ -1,5 +1,4 @@
-import React, {Component} from 'react'
-import { View} from 'react-native'
+import React from 'react'
 import { Divider } from 'react-native-material-design';
 
 const Hr = () => {

@@ -1,13 +1,12 @@
 import React , {Component} from 'react';
-import { ScrollView, View} from 'react-native';
+import { ScrollView, View, ActivityIndicator, StyleSheet, Text} from 'react-native';
 import ItemDetail from './ItemDetail';
 
-import ItemListHeader from './partials/ItemListHeader'
-import ItemListHeaderMini from './partials/ItemListHeaderMini'
 import Hr from './partials/Hr'
 
-class ItemList extends Component {
+import Loader from './Loading'
 
+class ItemList extends Component {
     // constructor(props) {
     //     super(props);
     //     this.state = { items: []};
@@ -28,9 +27,7 @@ class ItemList extends Component {
 
     renderItems(){
         return this.state.items.map(item => 
-            <View>
-                <ItemDetail key={item.name} item = {item}/>
-            </View> 
+            <ItemDetail key={item._id} item = {item}/>
         );
     }
     
@@ -38,12 +35,35 @@ class ItemList extends Component {
         return (
             <ScrollView scrollsToTop={false}>
                 <Hr/>
-                <ItemListHeader>{'Campgrounds'}</ItemListHeader>
-                <ItemListHeaderMini>There are {this.state.items.length} available campgrounds</ItemListHeaderMini>
+                <Text style={styles.ItemListHeader}>{this.state.items.length} available campgrounds</Text>
                 {this.renderItems()}
             </ScrollView>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    ItemListHeader:{
+        fontSize: 23,
+        marginLeft: 15,
+        marginBottom:5,
+        fontWeight:'bold',
+        fontFamily: 'Iowan Old Style',
+        color: '#000',
+    },
+    centering: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 8,
+    },
+    gray: {
+        backgroundColor: '#cccccc',
+    },
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 8,
+    },
+});
 
 export default ItemList;

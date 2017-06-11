@@ -33,4 +33,4 @@ class FadeInView extends Component {
   }
 }
 
-module.exports = FadeInView;
+export default FadeInView;
