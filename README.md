@@ -1,2 +1,19 @@
 # camperbnb-react-native
-React native app, for the camper-bnb site consuming this api https://camperbnb.herokuapp.com/api/search
+This a a demo react native app I built to accompany my demo node app [camper-bnb](https://camperbnb.herokuapp.com). 
+
+The app uses this api https://camperbnb.herokuapp.com/api/search which was built out in Mongo DB + Express + Node
+
+# Installation
+
+- `git clone https://github.com/oluomoniyi/camperbnb-react-native.git`
+- `cd camperbnb`
+- `npm install`
+- `react-native link`
+
+
+# Running
+
+- `react-native run-ios`
+- `react-native run-android`
+
+
