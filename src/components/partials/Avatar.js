@@ -1,11 +1,11 @@
 import React from 'react'
 import {TouchableOpacity, Image} from 'react-native'
 
-const AvatarButton = () => {
+const AvatarButton = (props) => {
     return (
         <TouchableOpacity style={styles.circle}>
-            <Image source={require('../../assets/img/add.png')}
-                style={{width: 40, height: 40}}/>
+            <Image source={props.imageURI}
+                style={{width: 30, height: 30}}/>
         </TouchableOpacity>
     )
 }

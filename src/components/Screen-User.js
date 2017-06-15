@@ -3,12 +3,12 @@ import { View, Image, TextInput, Text, TouchableOpacity, StyleSheet} from 'react
 import Hr from './partials/Hr'
 import TextLimit from './partials/TextLimit'
 import {defaultStyles} from './styles'
+
+import Avatar from './partials/Avatar';
 // import { Icon } from 'react-native-material-design';
 
 class UserScreen extends Component {
-
-  links = ['MY CAMPGROUNDS', 'ADD A NEW CAMPGROUND', 'BOOK A CAMPGROUND', 'LOGOUT']
-
+  
     static navigationOptions = {
     tabBarLabel: 'Notifications',
     tabBarIcon: ({ tintColor }) => (
@@ -22,13 +22,15 @@ class UserScreen extends Component {
   render() {
     return (
     <View style={styles.container}>
+        <View style={styles.userDetail}>
+          <View style={styles.circle}>
+                <Image source={require('../assets/img/image.png')} style={{width:120, height:120}} />
+          </View>
+          <Text style={styles.ItemListHeader}>
+              Harry Potter
+          </Text>
+        </View>
 
-      <View style={styles.circle}>
-            <Image source={require('../assets/img/image.png')} style={{width:120, height:120}} />
-      </View>
-      <Text style={styles.ItemListHeader}>
-          Harry Potter
-      </Text>
         <TouchableOpacity style={styles.NavContainer}>
           <View style={styles.NavItem}>
             <Text>My Campgrounds</Text>
@@ -49,7 +51,8 @@ class UserScreen extends Component {
           </View>
           <Image source={require('../assets/img/ic_exit_to_app_2x.png')} style={styles.NavIcon} />
         </TouchableOpacity>
-
+        
+        <Avatar imageURI={require('../assets/img/edit.png')}/>
     </View>
     );
   }
@@ -80,17 +83,22 @@ const styles = StyleSheet.create({
     },
     ItemListHeader:{
         fontSize: 23,
-        marginLeft: 15,
         marginBottom:5,
         fontWeight:'bold',
         ...defaultStyles.text,
         color: '#000',
         marginTop: 20,
+        width:null,
     },
     container:{
         marginTop:40,
-        justifyContent:'center',
-        alignItems:'center',
+        justifyContent:'flex-start',
+        alignItems:'flex-start',
+        flex: 1,
+    },
+    userDetail:{
+      alignSelf:'center',
+      justifyContent:'center',
     },
     circle: {
         width: 120,

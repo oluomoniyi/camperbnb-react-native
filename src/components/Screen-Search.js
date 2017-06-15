@@ -2,7 +2,6 @@
 import React, {Component} from 'react'
 import { View, Image, TextInput, Text, TouchableOpacity} from 'react-native'
 import Button from './Button';
-import ItemList from './ItemList';
 
 class Search extends Component {
     // constructor(props) {
@@ -42,9 +41,6 @@ class Search extends Component {
                             Clear
                         </Text>
                     </TouchableOpacity>
-                    {/*<Text style={{padding: 10, fontSize: 42}}>     onChangeText={(text) => this.setState({text})}
-                        {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
-                    </Text>*/}
                 </View>
             </View>
         );
