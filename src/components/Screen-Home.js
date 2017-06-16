@@ -4,17 +4,17 @@ import FadeInView from './FadeIn'
 import TextLimit from './partials/TextLimit'
 import Hr from './partials/Hr'
 import Avatar from './partials/Avatar';
-import {cardStyles, h1} from './styles'
+import {cardStyles, h1} from './styles';
+import Loading from './Loading'
 
 class HomeScreen extends React.Component {
-
     state = { items: []};
 
     componentWillMount(){
         fetch ('https://camperbnb.herokuapp.com/api/search/')
         .then ((response) => response.json ())
         .then ((responseData) => {
-            this.setState ({items: responseData.campgrounds.slice(0,40)})  
+            this.setState ({items: responseData.campgrounds})  
         })
         .catch(function(error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);

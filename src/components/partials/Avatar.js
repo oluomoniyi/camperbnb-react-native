@@ -1,7 +1,7 @@
 import React from 'react'
 import {TouchableOpacity, Image} from 'react-native'
 
-const AvatarButton = (props) => {
+const Avatar = (props) => {
     return (
         <TouchableOpacity style={styles.circle}>
             <Image source={props.imageURI}
@@ -28,4 +28,4 @@ const styles={
     }
 }
 
-export default AvatarButton;
+export default Avatar;

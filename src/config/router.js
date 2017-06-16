@@ -11,14 +11,14 @@ export const FeedStack = StackNavigator({
   Feed: {
     screen: HomeScreen,
     navigationOptions : {
-        title: 'back', 
-        header: null,
-        tabBarIcon: ({ tintColor }) => (
-          <Image
-              source={require('../assets/img/ic_home.png')}
-              style={[styles.icon, {tintColor: tintColor}]}
-          />
-        ),
+      title: 'back', 
+      header: null,
+      tabBarIcon: ({ tintColor }) => (
+        <Image
+            source={require('../assets/img/ic_home.png')}
+            style={[styles.icon, {tintColor: tintColor}]}
+        />
+      ),
     }
   },
   Details: {
@@ -30,27 +30,52 @@ export const FeedStack = StackNavigator({
 });
 
 export const Tabs = TabNavigator({
-  Home: { screen: FeedStack },
-  Search: { screen: SearchScreen },
-  User: { screen: UserScreen },
-}, {
-    tabBarOptions: {
-        labelStyle: {
-            fontSize: 1,   
-        },
-        activeTintColor: '#fff',
-        inactiveTintColor:'#eee',
-        tabStyle: {
-            width: 100,    
-        },
-        style: {
-            backgroundColor: '#e74c3c',
-            marginTop: 20,
-            elevation:2,
-        },
-        
-    }, tabBarPosition: 'top', animationEnabled:true, swipeEnabled:true
-});
+    Home: { 
+      screen: FeedStack,
+      navigationOptions : {
+        title: 'back', 
+        header: null,
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+              source={require('../assets/img/ic_home.png')}
+              style={[styles.icon, {tintColor: tintColor}]}
+          />
+        )
+      }
+    },
+    Search: { 
+      screen: SearchScreen ,
+      navigationOptions : {
+          tabBarLabel: '',
+          tabBarIcon: ({ tintColor }) => (
+          <Image
+              source={require('../assets/img/ic_search.png')}
+              style={[styles.icon, {tintColor: tintColor}]}
+          />
+          ),
+      }
+    },
+    User: { screen: UserScreen },
+  }, {
+      tabBarOptions: {
+          labelStyle: {
+              fontSize: 1,   
+          },
+          activeTintColor: '#e74c3c',
+          inactiveTintColor:'#ddd',
+          tabStyle: {
+              width: 100,
+          },
+          style: {
+              backgroundColor: '#fff',
+              marginTop: 20,
+              elevation:2,
+              borderBottomColor:'#ddd',
+              borderBottomWidth:1,
+          },
+          
+      }, tabBarPosition: 'top', animationEnabled:true, swipeEnabled:true
+    });
 
 export const Root = StackNavigator({
   Tabs: {

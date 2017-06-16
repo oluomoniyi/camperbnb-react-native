@@ -1,33 +1,31 @@
-import React from 'react';
-import { View, Text } from 'react-native';
- 
-import Spinner from 'react-native-loading-spinner-overlay';
- 
-class Loader extends React.Component {
- 
-  constructor(props) {
-    super();
-    this.state = {
-      visible: false
-    };
-  }
- 
-  /* eslint react/no-did-mount-set-state: 0 */
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({
-        visible: !this.state.visible
-      });
-    }, 3000);
-  }
- 
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <Spinner visible={this.state.visible} textContent={"Loading..."} textStyle={{color: '#FFF'}} />
+import React, { Component } from 'react';
+import {
+   ActivityIndicator,
+   View,
+   StyleSheet
+} from 'react-native';
+
+export default ActivityIndicatorExample = (props) => {
+   return (
+      <View style = {styles.container}>
+         <ActivityIndicator animating = {props.animating}
+           style = {styles.activityIndicator} size = "large"
+         />
       </View>
-    );
-  }
+   );
 }
 
-export default Loader;
+const styles = StyleSheet.create ({
+   container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 70
+   },
+   activityIndicator: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 80
+   }
+});

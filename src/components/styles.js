@@ -7,6 +7,43 @@ export const defaultStyles = {
   },
 }
 
+export const searchStyles = {
+  SearchContainer:{
+    flex: 1,
+  },
+  SearchSection: {
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
+  searchIcon: {
+    width:30, 
+    height:30,
+    marginTop:10, 
+    marginRight:4,
+    marginLeft:5,
+    tintColor:'#ccc'
+  },
+  SearchInput: {
+    height: 30, 
+    width:null,
+    flex:1,
+    marginTop:10, 
+    marginBottom:10,
+    paddingRight:5, 
+    color:'#000', 
+    fontSize: 20,
+    borderWidth:0,
+  }, 
+  SearchBorder: {
+    borderBottomWidth:1, 
+    borderBottomColor:'#000000',
+    marginleft:15,
+    marginRight:15
+  }
+}
+
 export const view = {
   container: {
     flex: 1,
@@ -16,10 +53,11 @@ export const view = {
 export const h1 = {
   text: {
      ...defaultStyles.text,
-     ...defaultStyles.leftMargin,
+     paddingLeft:15,
      fontSize: 20,
      paddingBottom: 10,
      paddingTop:10,
+     backgroundColor:'#fff'
   }
 }
 
@@ -33,7 +71,8 @@ export const cardStyles = {
         borderColor: '#d6d7da',
         overflow: 'hidden',
         marginBottom:20,
-        paddingBottom: 10
+        paddingBottom: 10,
+        backgroundColor: '#fff'
     },
     CardHeaderStyle:{
         fontSize: 24,
