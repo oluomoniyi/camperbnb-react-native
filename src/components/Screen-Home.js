@@ -1,62 +1,99 @@
 import React, {Component} from 'react';
-import {Text, View, Image, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native'
-import FadeInView from './FadeIn'
-import TextLimit from './partials/TextLimit'
-import Hr from './partials/Hr'
-import Avatar from './partials/Avatar';
-import {cardStyles, h1} from './styles';
-import Loading from './Loading'
+import {
+    Text, View, Image, StyleSheet, Button, 
+    ScrollView, TouchableOpacity,  ActivityIndicator, RefreshControl
+} from 'react-native'
+import {FadeInView, TextLimit, Hr,Avatar,Loading} from './common'
+import {horizontalCardStyles, h1, h4, Home} from './styles';
+
+import {connect} from 'react-redux'
+import {GET_ALL_DATA} from '../config/types'
+
 
 class HomeScreen extends React.Component {
-    state = { items: []};
 
-    componentWillMount(){
-        fetch ('https://camperbnb.herokuapp.com/api/search/')
-        .then ((response) => response.json ())
-        .then ((responseData) => {
-            this.setState ({items: responseData.campgrounds})  
-        })
-        .catch(function(error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
-            throw error;
-        });
-    }
-
-    renderItems(){
-        return this.state.items.map(item => 
-            <TouchableOpacity style={cardStyles.container} 
+    renderFeatured(){
+        const {campgrounds} = this.props
+        return campgrounds.map(item =>
+            <TouchableOpacity style={horizontalCardStyles.container} 
                 onPress={() => this.props.navigation.navigate('Details', {  id: item._id, name: item.name })}
                 key={item._id}>
-                <Image style={{width: null, height: 200}}
-                source={{uri: item.image.replace(".webp", ".jpg")}} //fix in mongo db
+                <Image style={horizontalCardStyles.image}
+                source={{uri: item.image.replace(".webp", ".jpg")}} //change webp source to jpg, lazy fix instead of node api fix
                 />
-                <View style={cardStyles.CardHighlightContainer}>
-                        <Text style={cardStyles.CardHighlightText}>
-                            {item.location.toUpperCase()}
-                        </Text>
-                </View>
-                <View style={cardStyles.Margin}>
-                    <TextLimit characterLimit={20} style={cardStyles.CardHeaderStyle}>{item.name}</TextLimit>
-                    <Text style={cardStyles.CardHeaderMiniStyle}>£{item.price}</Text>
-                    <TextLimit characterLimit={300} style={cardStyles.CardDescriptionStyle}>{item.description}</TextLimit>
+                <View style={horizontalCardStyles.CardHighlightContainer}>
+                    <Text style={horizontalCardStyles.CardHighlightText}>
+                        {item.location.toUpperCase()}
+                    </Text>
+                    <TextLimit characterLimit={20} style={horizontalCardStyles.CardHeaderStyle}>{item.name}</TextLimit>
+                    <Text style={horizontalCardStyles.CardHeaderMiniStyle}>£{item.price}</Text>
                 </View>
             </TouchableOpacity>
-        );
+        )
+    }
+
+    renderMoreButton(){
+        return (
+             <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('ShowAll')}
+                style={{position: 'absolute', right: 15}}
+                >
+                <Text style={{fontSize:13,paddingBottom: 10,paddingTop:10,paddingLeft:15}}>See More ></Text>
+            </TouchableOpacity>
+        )
     }
 
     render() {
+        console.log("PROPS",this.props)
         const { navigate } = this.props.navigation;
+        const {loading} = this.props
         return (
-            <FadeInView style={{width: null, height: 400, flex:1}}>
-                <ScrollView scrollsToTop={false}>
-                    <Text style={h1.text}>{this.state.items.length} available campgrounds</Text>
-                    {this.renderItems()}
+            <FadeInView style={{width: null, flex:1, backgroundColor: '#fff'}}>
+                <ScrollView scrollsToTop={false} showsVerticalScrollIndicator={true}>
+                    
+                    <Image style={Home.backgroundImage} source={require('../assets/img/camp1.jpg')}>
+                        <Image style={Home.logo}
+                        source={require('../assets/img/icon.png')}
+                        />
+                        <Text style={h1.text}>camperbnb</Text>
+                        <Text style={h4.text} >your adventure starts here</Text>
+                        <Text style={h4.text} >CAMPGROUND ✻ LOCATION ✻ ADVENTURE</Text>
+                    </Image>
+
+                    <View>    
+                        <Text style={{fontSize:20,paddingBottom: 10,paddingTop:10,paddingLeft:15}}>Featured Campgrounds</Text>
+                        {this.renderMoreButton()}
+                       
+                        <ScrollView scrollsToTop={false} horizontal={true} style={{marginRight:10, height: null}}>
+                            {this.renderFeatured()}
+                        </ScrollView>
+
+                        <ActivityIndicator
+                            animating={loading}
+                            style={styles.loader}
+                            size="large"
+                        />
+                    </View>
+
                 </ScrollView>
-                <Avatar imageURI={require('../assets/img/add.png')} ></Avatar>
+                <Avatar 
+                    imageURI={require('../assets/img/add.png')} 
+                    onPress={() => this.props.navigation.navigate('ShowAll')}
+                />
             </FadeInView>
         )
         }
     }
 
+const styles ={
+    loader: {
+        flex: 1,
+        alignItems: 'center',     // center horizontally
+        justifyContent: 'center', // center vertically
+    },
+}
+const mapStateToProps = (state) => {
+    return state.getAllData
+}
 
-export default HomeScreen;
+export default connect(mapStateToProps)(HomeScreen);

@@ -5,7 +5,7 @@ import {
    StyleSheet
 } from 'react-native';
 
-export default ActivityIndicatorExample = (props) => {
+const ActivityIndicatorExample = (props) => {
    return (
       <View style = {styles.container}>
          <ActivityIndicator animating = {props.animating}
@@ -29,3 +29,5 @@ const styles = StyleSheet.create ({
       height: 80
    }
 });
+
+export {ActivityIndicatorExample};

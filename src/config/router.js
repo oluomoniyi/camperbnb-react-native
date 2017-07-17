@@ -6,6 +6,7 @@ import HomeScreen from '../components/Screen-Home';
 import SearchScreen from '../components/Screen-Search';
 import UserScreen from '../components/Screen-User';
 import ShowDetailScreen from '../components/Screen-ShowDetail';
+import ShowFeedScreen from '../components/Screen-Feed';
 
 export const FeedStack = StackNavigator({
   Feed: {
@@ -21,12 +22,20 @@ export const FeedStack = StackNavigator({
       ),
     }
   },
+  ShowAll: {
+    screen: ShowFeedScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: 'All Campgrounds',
+      tabBarVisible: false,
+    })
+  },
   Details: {
     screen: ShowDetailScreen,
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.name}`,
-    }),
-  },
+      tabBarVisible: false,
+    })
+  }
 });
 
 export const Tabs = TabNavigator({
@@ -55,7 +64,7 @@ export const Tabs = TabNavigator({
           ),
       }
     },
-    User: { screen: UserScreen },
+    // User: { screen: UserScreen },
   }, {
       tabBarOptions: {
           labelStyle: {

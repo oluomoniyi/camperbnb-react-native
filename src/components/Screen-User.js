@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 import { View, Image, TextInput, Text, TouchableOpacity, StyleSheet} from 'react-native'
-import Hr from './partials/Hr'
-import TextLimit from './partials/TextLimit'
+import {TextLimit, Hr, Avatar} from './common'
 import {defaultStyles} from './styles'
 
-import Avatar from './partials/Avatar';
 // import { Icon } from 'react-native-material-design';
 
 class UserScreen extends Component {

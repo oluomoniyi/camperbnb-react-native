@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Text, Image, TouchableOpacity, StyleSheet, View, ScrollView} from 'react-native';
-import Avatar from './partials/Avatar';
-import { cardStyles, view } from './styles';
+import {Avatar} from './common'
+import { cardStyles, viewFlex } from './styles';
 
 class ShowDetailScreen extends Component {
     constructor(props) {
@@ -21,12 +21,22 @@ class ShowDetailScreen extends Component {
             throw error;
         });
     }
-    
+
+    fetchImages(){
+        return (
+            this.state.items.map(item => 
+                    <Image style={{width: null, height: 300}}
+                    source={{uri: item.image.replace(".webp", ".jpg")}} //fix in mongo db
+                    key={i}/>
+            )
+        )
+    }
+
     renderItem(){
         return this.state.items.map(item => 
             <View key={item._id}>
                 <Image style={{width: null, height: 300}}
-                source={{uri: item.image.replace(".webp", ".jpg")}} //fix in mongo db
+                    source={{uri: item.image.replace(".webp", ".jpg")}} //fix in mongo db
                 />
                 <View style={cardStyles.CardHighlightContainer}>
                     <Text style={cardStyles.CardHighlightText}>
@@ -44,9 +54,10 @@ class ShowDetailScreen extends Component {
 
     render(){
         return (
-            <View>
+            <ScrollView style={viewFlex.flex} scrollsToTop={false} showsVerticalScrollIndicator={true}>
                 {this.renderItem()}
-            </View>
+                <Avatar imageURI={require('../assets/img/add.png')} ></Avatar>
+            </ScrollView>
         )
     }
 }

@@ -1,8 +1,8 @@
 // import lib
 import React, {Component} from 'react'
 import { View, Image, TextInput, Text, TouchableOpacity} from 'react-native'
-import Button from './Button';
-import Hr from './partials/Hr';
+import {Button, Hr} from './common'
+
 import {searchStyles} from './styles'
 
 class Search extends Component {

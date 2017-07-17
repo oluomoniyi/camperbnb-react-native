@@ -3,13 +3,62 @@ export const defaultStyles = {
     fontFamily: 'Avenir-Light',
   },
   leftMargin: {
-    marginLeft: 15
+    marginLeft: 15,
   },
+}
+
+export const viewFlex = {
+  flex: {
+    flex:1,
+  }
+}
+
+export const Home = {
+  logo: {
+      width: 100,
+      height: 100,
+      alignSelf: 'center'
+    },
+  backgroundImage: {
+    flex: 1,
+    alignSelf: 'stretch',
+    width: null,
+    paddingTop: 2,
+  }
+}
+
+export const h1 = {
+  text: {
+     ...defaultStyles.text,
+     fontSize: 20,
+     paddingTop:10,
+     width:null,
+     alignSelf: 'center',
+     backgroundColor: 'rgba(0,0,0,0)',
+     color: '#fff',
+     textShadowColor: '#000',
+     textShadowOffset: {width: 1, height: 1},
+     textShadowRadius: 3,
+  }
+}
+
+export const h4 = {
+  text: {
+     ...defaultStyles.text,
+     fontSize: 13,
+     paddingTop:10,
+     alignSelf: 'center',
+     backgroundColor: 'rgba(0,0,0,0)',
+     color: '#fff',
+     textShadowColor: '#000',
+     textShadowOffset: {width: 1, height: 1},
+     textShadowRadius: 2
+  }
 }
 
 export const searchStyles = {
   SearchContainer:{
-    flex: 1,
+    ...viewFlex.flex,
   },
   SearchSection: {
     backgroundColor: '#fff',
@@ -28,7 +77,7 @@ export const searchStyles = {
   SearchInput: {
     height: 30, 
     width:null,
-    flex:1,
+    ...viewFlex.flex,
     marginTop:10, 
     marginBottom:10,
     paddingRight:5, 
@@ -44,29 +93,13 @@ export const searchStyles = {
   }
 }
 
-export const view = {
-  container: {
-    flex: 1,
-  }
-}
 
-export const h1 = {
-  text: {
-     ...defaultStyles.text,
-     paddingLeft:15,
-     fontSize: 20,
-     paddingBottom: 10,
-     paddingTop:10,
-     backgroundColor:'#fff'
-  }
-}
 
 export const cardStyles = {
     Margin:{
          ...defaultStyles.leftMargin,
     },
     container: {
-        borderRadius: 4,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
         overflow: 'hidden',
@@ -104,4 +137,42 @@ export const cardStyles = {
     CardHighlightContainer:{
         backgroundColor: 'rgba(231, 76, 60, 0.9)',
     }
+}
+
+export const horizontalCardStyles = {
+    container: {
+        overflow: 'hidden',
+        paddingBottom: 10,
+         ...defaultStyles.leftMargin,
+         width:200,
+    },
+    image: {
+      width: 200,
+      height: 200
+    },
+    CardHighlightText:{
+        color: '#000',
+        fontSize: 14,
+        width: null,
+        ...defaultStyles.text,
+        marginTop: 10,
+    },
+    CardHeaderStyle:{
+        fontSize: 17,
+        marginBottom:5,
+        ...defaultStyles.text,
+    },
+    CardHeaderMiniStyle:{
+        fontSize: 15,
+        marginTop: 5,
+        marginBottom:5,
+        color: '#e74c3c',
+        ...defaultStyles.text,
+    },
+    CardDescriptionStyle:{
+        color: '#666666',
+        fontSize: 12,
+        ...defaultStyles.text,
+    },
+    
 }
