@@ -2,7 +2,8 @@ import {
     GET_ALL_DATA,
     GET_CAMP_DATA_LOADING,
     GET_CAMP_DATA_RECEIVED,
-    GET_CAMP_DATA_ERROR
+    GET_CAMP_DATA_ERROR,
+    GET_SEARCH_DATA,    
 } from '../config/types'
 
 export const apiMiddleware = store => next => action => {
@@ -11,7 +12,7 @@ export const apiMiddleware = store => next => action => {
   switch (action.type) {
     // In case we receive an action to send an API request
     case GET_ALL_DATA:
-      // Dispatch GET_MOVIE_DATA_LOADING to update loading state
+      // Dispatch GET_CAMP_DATA_LOADING to update loading state
       store.dispatch({type: GET_CAMP_DATA_LOADING});
       // Make API call and dispatch appropriate actions when done
       fetch(`https://camperbnb.herokuapp.com/api/search/`)
@@ -21,7 +22,7 @@ export const apiMiddleware = store => next => action => {
           data
         }))
         .catch(error => next({
-          type: GET_CAMP_DATA_RECEIVED,
+          type: GET_CAMP_DATA_ERROR,
           error
         }));
       break;
@@ -29,4 +30,12 @@ export const apiMiddleware = store => next => action => {
     default:
       break;
   }
+};
+
+export const getSearch = (text) => {
+    console.log("disapatched",text)
+    return {
+        type: GET_SEARCH_DATA,
+        payload: text,
+    };
 };
