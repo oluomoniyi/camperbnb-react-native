@@ -3,7 +3,10 @@ import {
     GET_CAMP_DATA_LOADING,
     GET_CAMP_DATA_RECEIVED,
     GET_CAMP_DATA_ERROR,
-    GET_SEARCH_DATA
+    GET_SEARCH_DATA, 
+    GET_SEARCH_DATA_LOADING,
+    GET_SEARCH_DATA_RECEIVED,
+    GET_SEARCH_DATA_ERROR
 } from '../config/types'
 
 const INITIAL_STATE = {
@@ -24,6 +27,23 @@ export default reducer = (state = INITIAL_STATE, action) => {
         campgrounds: action.data.campgrounds, // update campgrounds array with reponse data
       };
     case GET_CAMP_DATA_ERROR:
+      return {
+        ...state, 
+        error: action.error,
+        loading: false,
+      };
+
+     case GET_SEARCH_DATA_LOADING:
+      return {
+        ...state,                   // keep the existing state,
+        loading: true,              // but change loading to true
+      };
+    case GET_SEARCH_DATA_RECEIVED:
+      return {
+        loading: false,             // set loading to false
+        campgrounds: action.data.campgrounds, // update campgrounds array with reponse data
+      };
+    case GET_SEARCH_DATA_ERROR:
       return {
         ...state, 
         error: action.error,

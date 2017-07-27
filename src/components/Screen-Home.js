@@ -91,12 +91,8 @@ class HomeScreen extends React.Component {
                        
                         <ScrollView scrollsToTop={false} horizontal={true} style={{marginRight:10, height: null}}>
                             {this.renderFeatured()}
-                        </ScrollView><TouchableOpacity
-                                       onPress={() => {}}
-                                       activeOpacity={75 / 100}>
-                                       <Text>Press</Text>
-                                     </TouchableOpacity>
-
+                        </ScrollView>
+                        
                         <Loading
                             animating={loading}
                             style={styles.loader}

@@ -5,23 +5,24 @@ import {Button, Hr} from './common'
 import {searchStyles} from './styles'
 
 import {connect} from 'react-redux'
+import reducers from '../reducers'
 import {GET_SEARCH_DATA} from '../config/types'
 
-import {getSearch} from '../actions'
+import {getSearch,apiMiddleware} from '../actions'
 
 class Search extends Component {
-    search (text){
-        //this.props.searchText(text)
-        this.props.getSearch(text)
-        console.log("asda",text)
-    }
 
-    
+    search (searchQuery){
+        //this.props
+        //this.props.getSearch(text)
+        console.log("i am the text", searchQuery)
+        //this.props.getAllData
+        this.props.apiMiddleware({ GET_SEARCH_DATA, searchQuery });
+       // store.dispatch({type: GET_SEARCH_DATA, searchQuery});
+    }
 
     render(){
         console.log("PROPS SEARCH",this.props, "STATE", this.state)
-
-
         return (
             <View style={searchStyles.SearchContainer}>
                 <View style={searchStyles.SearchSection}>
@@ -49,12 +50,8 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("searchdata",state.searchData)
-    const { searchText } = state.searchData;
-    return {
-        //filteredItems: campgrounds.filter((campground) => campground.startsWith(searchText))
-        searchText
-    };
+    console.log("searchdata",state)
+    return state.getAllData
 }
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps, {apiMiddleware})(Search);
