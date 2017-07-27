@@ -20,7 +20,7 @@ export const apiMiddleware = store => next => action => {
       // Make API call and dispatch appropriate actions when done
       fetch(`https://camperbnb.herokuapp.com/api/search/`)
         .then(response => response.json())
-        .then(data2 => next({
+        .then(data => next({
           type: GET_CAMP_DATA_RECEIVED,
           data
         }))
@@ -28,30 +28,30 @@ export const apiMiddleware = store => next => action => {
           type: GET_CAMP_DATA_ERROR,
           error
         }));
-      case GET_SEARCH_DATA:
-        store.dispatch({GET_SEARCH_DATA_LOADING});
-        fetch(`https://camperbnb.herokuapp.com/api/search/q=`)
-        .then(response => response.json())
-        .then(data2 => next({
-          type: GET_SEARCH_DATA_RECEIVED,
-          data
-        }))
-        .catch(error => next({
-          type: GET_SEARCH_DATA_ERROR,
-          error
-        }));
-      break;
+    // case GET_SEARCH_DATA:
+    //   store.dispatch({type:GET_SEARCH_DATA_LOADING});
+    //   fetch(`https://camperbnb.herokuapp.com/api/search/q=`)
+    //   .then(response => response.json())
+    //   .then(data => next({
+    //     type: GET_SEARCH_DATA_RECEIVED,
+    //     data
+    //   }))
+    //   .catch(error => next({
+    //     type: GET_SEARCH_DATA_ERROR,
+    //     error
+    //   }));
+    break;
     // Do nothing if the action does not interest us
     
 };
 }
 
-// export const employeeUpdate = ({ prop, value }) => {
-//   return {
-//     type: EMPLOYEE_UPDATE,
-//     payload: { prop, value }
-//   };
-// };
+export const getSearch = ({ GET_SEARCH_DATA, searchQuery, data }) => {
+  return {
+    type: GET_SEARCH_DATA,
+    payload: {}
+  };
+};
 
 // export const getSearch = ({action}) => {
 //     switch(action.type) {

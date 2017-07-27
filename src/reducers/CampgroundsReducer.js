@@ -33,6 +33,13 @@ export default reducer = (state = INITIAL_STATE, action) => {
         loading: false,
       };
 
+      case GET_SEARCH_DATA:
+      console.log("action",action)
+      return {
+        ...state,                   // keep the existing state,
+        campgrounds: action.data              // but change loading to true
+      };
+
      case GET_SEARCH_DATA_LOADING:
       return {
         ...state,                   // keep the existing state,

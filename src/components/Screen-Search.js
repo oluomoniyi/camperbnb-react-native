@@ -17,7 +17,7 @@ class Search extends Component {
         //this.props.getSearch(text)
         console.log("i am the text", searchQuery)
         //this.props.getAllData
-        this.props.apiMiddleware({ GET_SEARCH_DATA, searchQuery });
+        this.props.getSearch({GET_SEARCH_DATA, searchQuery });
        // store.dispatch({type: GET_SEARCH_DATA, searchQuery});
     }
 
@@ -54,4 +54,4 @@ const mapStateToProps = (state) => {
     return state.getAllData
 }
 
-export default connect(mapStateToProps, {apiMiddleware})(Search);
+export default connect(mapStateToProps, {getSearch})(Search);
