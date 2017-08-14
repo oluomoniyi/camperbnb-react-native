@@ -17,12 +17,12 @@ class Search extends Component {
         //this.props.getSearch(text)
         console.log("i am the text", searchQuery)
         //this.props.getAllData
-        this.props.getSearch({GET_SEARCH_DATA, searchQuery });
-       // store.dispatch({type: GET_SEARCH_DATA, searchQuery});
+        //this.props.getSearch({value, prop });
+        //store.dispatch({type: GET_SEARCH_DATA, searchQuery});
     }
 
     render(){
-        console.log("PROPS SEARCH",this.props, "STATE", this.state)
+        console.log("All props",this.props, "App State", this.state)
         return (
             <View style={searchStyles.SearchContainer}>
                 <View style={searchStyles.SearchSection}>
@@ -50,8 +50,27 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("searchdata",state)
-    return state.getAllData
+    //console.log("getAllData state.getAllData.camprgounds",state.getAllData)
+    const datamap = function () {
+        return JSON.parse(state.getAllData.camprgounds).filter((campground) => {
+            return campground.location == 'England'
+        })
+    }
+    console.log("DataMap",datamap())
+
+    return {
+        data:state.getAllData,
+        //datamap
+        // campgroundsSearch () {
+        //     return state.getAllData.camprgounds.filter((campground) => {
+        //         return campground.location == 'England'
+        //     })
+        // } 
+    }
+        
+    // state.getAllData.camprgounds.filter((campground) => {
+    //     return campground.location == 'England'
+    // })
 }
 
 export default connect(mapStateToProps, {getSearch})(Search);

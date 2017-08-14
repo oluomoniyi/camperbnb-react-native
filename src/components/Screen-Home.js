@@ -117,7 +117,6 @@ const styles ={
     },
 }
 const mapStateToProps = (state) => {
-    console.log("STATE",state.getAllData.campgrounds)
     return state.getAllData
 }
 
