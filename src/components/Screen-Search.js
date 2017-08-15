@@ -1,4 +1,5 @@
 // import lib
+//https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filter
 import React, {Component} from 'react'
 import { View, Image, TextInput, Text, TouchableOpacity} from 'react-native'
 import {Button, Hr} from './common'
