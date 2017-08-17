@@ -6,7 +6,8 @@ import {
     GET_SEARCH_DATA, 
     GET_SEARCH_DATA_LOADING,
     GET_SEARCH_DATA_RECEIVED,
-    GET_SEARCH_DATA_ERROR
+    GET_SEARCH_DATA_ERROR,
+    SEARCH
 } from '../config/types'
 
 export const apiMiddleware = store => next => action => {
@@ -46,12 +47,16 @@ export const apiMiddleware = store => next => action => {
 };
 }
 
-export const getSearch = ({ GET_SEARCH_DATA, searchQuery, data }) => {
-  return {
-    type: GET_SEARCH_DATA,
-    payload: {}
-  };
-};
+export function search(value) {
+  return {type: SEARCH, value};
+}
+
+// export const getSearch = ({ GET_SEARCH_DATA, searchQuery, data }) => {
+//   return {
+//     type: GET_SEARCH_DATA,
+//     payload: {}
+//   };
+// };
 
 // export const getSearch = ({action}) => {
 //     switch(action.type) {

@@ -13,6 +13,14 @@ export const viewFlex = {
   }
 }
 
+export const Loader = {
+    postion:  {
+        flex: 1,
+        alignItems: 'center',     // center horizontally
+        justifyContent: 'center', // center vertically
+    }
+}
+
 export const Home = {
   logo: {
       width: 100,

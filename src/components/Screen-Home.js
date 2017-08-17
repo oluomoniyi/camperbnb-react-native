@@ -12,8 +12,8 @@ import {
   ListView,
   TouchableHighlight,
 } from 'react-native'
-import {FadeInView, TextLimit, Hr,Avatar,Loading} from './common'
-import {horizontalCardStyles, h1, h4, Home} from './styles';
+import {FadeInView, TextLimit, Hr, Avatar, Loading, WelcomeBanner, ButtonMore, CardFeatured} from './common'
+import {horizontalCardStyles, h1, h4, Home, loader} from './styles';
 
 import {connect} from 'react-redux'
 import {GET_ALL_DATA} from '../config/types'
@@ -58,36 +58,21 @@ class HomeScreen extends React.Component {
         )
     }
 
-    renderMoreButton(){
-        return (
-             <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('ShowAll')}
-                style={{position: 'absolute', right: 15}}
-                >
-                <Text style={{fontSize:13,paddingBottom: 10,paddingTop:10,paddingLeft:15}}>See More ></Text>
-            </TouchableOpacity>
-        )
-    }
-
     render() {
         const { navigate } = this.props.navigation;
         const { loading } = this.props
         return (
             <FadeInView style={{width: null, flex:1, backgroundColor: '#fff'}}>
                 <ScrollView scrollsToTop={false} showsVerticalScrollIndicator={true}>
-
-                    <Image style={Home.backgroundImage} source={require('../assets/img/camp1.jpg')}>
-                        <Image style={Home.logo}
-                        source={require('../assets/img/icon.png')}
-                        />
-                        <Text style={h1.text}>camperbnb</Text>
-                        <Text style={h4.text} >your adventure starts here</Text>
-                        <Text style={h4.text} >CAMPGROUND ✻ LOCATION ✻ ADVENTURE</Text>
-                    </Image>
-
+                
+                <WelcomeBanner/>
+    
                     <View>    
-                        <Text style={{fontSize:20,paddingBottom: 10,paddingTop:10,paddingLeft:15}}>Featured Campgrounds</Text>
-                        {this.renderMoreButton()}
+                        <Text style={{fontSize:20,paddingBottom: 10,paddingTop:10,paddingLeft:15}}>
+                            Featured Campgrounds
+                        </Text>
+                        
+                        <ButtonMore navigateTo = {() => this.props.navigation.navigate('ShowAll')}/>
                        
                         <ScrollView scrollsToTop={false} horizontal={true} style={{marginRight:10, height: null}}>
                             {this.renderFeatured()}
@@ -95,27 +80,21 @@ class HomeScreen extends React.Component {
                         
                         <Loading
                             animating={loading}
-                            style={styles.loader}
+                            style={loader.position}
                         />
                     </View>
 
                 </ScrollView>
+                
                 <Avatar 
                     imageURI={require('../assets/img/add.png')} 
                     onPress={() => this.props.navigation.navigate('ShowAll')}
                 />
             </FadeInView>
-        )
+            )
         }
     }
 
-const styles ={
-    loader: {
-        flex: 1,
-        alignItems: 'center',     // center horizontally
-        justifyContent: 'center', // center vertically
-    },
-}
 const mapStateToProps = (state) => {
     return state.getAllData
 }

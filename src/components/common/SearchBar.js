@@ -25,13 +25,11 @@ class SearchBar extends Component {
                 onChangeText={this.search.bind(this)}
             />
             
-            
-            <input
-              className="form-control"
-              placeholder = "Procurar Trabalho"
-              onChange={(e) => search(e.target.value)}
-              value={value} />
-         </View>
+           </View>
+            //  <input className="form-control"
+            //   placeholder = "Procurar Trabalho"
+            //   onChange={(e) => search(e.target.value)}
+            //   value={value} />
     );
   }
 } 
