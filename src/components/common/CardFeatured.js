@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {TouchableOpacity, Image, View, Text, TextLimit} from 'react-native'
+import {TouchableOpacity, Image, View, Text} from 'react-native'
 
 import {TextLimit} from './TextLimit'
 
@@ -25,4 +25,4 @@ const CardFeatured = (props) => {
     )
 }
 
-export default CardFeatured
+export {CardFeatured}

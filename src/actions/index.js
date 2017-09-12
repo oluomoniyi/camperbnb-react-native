@@ -29,34 +29,15 @@ export const apiMiddleware = store => next => action => {
           type: GET_CAMP_DATA_ERROR,
           error
         }));
-    // case GET_SEARCH_DATA:
-    //   store.dispatch({type:GET_SEARCH_DATA_LOADING});
-    //   fetch(`https://camperbnb.herokuapp.com/api/search/q=`)
-    //   .then(response => response.json())
-    //   .then(data => next({
-    //     type: GET_SEARCH_DATA_RECEIVED,
-    //     data
-    //   }))
-    //   .catch(error => next({
-    //     type: GET_SEARCH_DATA_ERROR,
-    //     error
-    //   }));
+
+    //   fetch(`https://camperbnb.herokuapp.com/api/search/q=`) 
     break;
-    // Do nothing if the action does not interest us
-    
 };
 }
 
 export function search(value) {
   return {type: SEARCH, value};
 }
-
-// export const getSearch = ({ GET_SEARCH_DATA, searchQuery, data }) => {
-//   return {
-//     type: GET_SEARCH_DATA,
-//     payload: {}
-//   };
-// };
 
 // export const getSearch = ({action}) => {
 //     switch(action.type) {

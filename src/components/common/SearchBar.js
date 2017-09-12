@@ -5,8 +5,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {search} from './actions';
-import {GET_SEARCH_DATA} from '../config/types'
+import {search} from '../../actions';
 
 class SearchBar extends Component {
   render() {
@@ -34,8 +33,8 @@ class SearchBar extends Component {
   }
 } 
 
-function mapStateToProps({works}) {
-  return {value: works.value};
+function mapStateToProps({campgrounds}) {
+  return {value: campgrounds.value};
 }
 
 function mapDispatchToProps(dispatch) {

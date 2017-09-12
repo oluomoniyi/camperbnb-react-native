@@ -64,7 +64,7 @@ export const Tabs = TabNavigator({
           ),
       }
     },
-    // User: { screen: UserScreen },
+    User: { screen: UserScreen },
   }, {
       tabBarOptions: {
           labelStyle: {

@@ -36,8 +36,8 @@ export default reducer = (state = INITIAL_STATE, action) => {
 
     case SEARCH: {
       const {value} = action;
-      const works = state.getAllData.filter((val) => val.includes(value));
-      return {...state, value, works};
+      const campgrounds = state.getAllData.filter((val) => val.includes(value));
+      return {...state, value, campgrounds};
     }
 
     case GET_SEARCH_DATA:

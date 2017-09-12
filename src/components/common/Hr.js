@@ -7,4 +7,4 @@ const Hr = () => {
     );
 }
 
-export default {Hr};
+export {Hr};

@@ -13,7 +13,7 @@ export const viewFlex = {
   }
 }
 
-export const Loader = {
+export const loader = {
     postion:  {
         flex: 1,
         alignItems: 'center',     // center horizontally
