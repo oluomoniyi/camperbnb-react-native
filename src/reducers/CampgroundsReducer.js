@@ -6,7 +6,8 @@ import {
     GET_SEARCH_DATA, 
     GET_SEARCH_DATA_LOADING,
     GET_SEARCH_DATA_RECEIVED,
-    GET_SEARCH_DATA_ERROR
+    GET_SEARCH_DATA_ERROR,
+    SEARCH
 } from '../config/types'
 
 const INITIAL_STATE = {
@@ -33,29 +34,35 @@ export default reducer = (state = INITIAL_STATE, action) => {
         loading: false,
       };
 
-      case GET_SEARCH_DATA:
-      console.log("action",action)
-      return {
-        ...state,                   // keep the existing state,
-        campgrounds: action.data              // but change loading to true
-      };
+    case SEARCH: {
+      const {value} = action;
+      const works = state.getAllData.filter((val) => val.includes(value));
+      return {...state, value, works};
+    }
 
-     case GET_SEARCH_DATA_LOADING:
-      return {
-        ...state,                   // keep the existing state,
-        loading: true,              // but change loading to true
-      };
-    case GET_SEARCH_DATA_RECEIVED:
-      return {
-        loading: false,             // set loading to false
-        campgrounds: action.data.campgrounds, // update campgrounds array with reponse data
-      };
-    case GET_SEARCH_DATA_ERROR:
-      return {
-        ...state, 
-        error: action.error,
-        loading: false,
-      };
+    case GET_SEARCH_DATA:
+    console.log("action",action)
+    return {
+      ...state,                   // keep the existing state,
+      campgrounds: action.data              // but change loading to true
+    };
+
+   case GET_SEARCH_DATA_LOADING:
+    return {
+      ...state,                   // keep the existing state,
+      loading: true,              // but change loading to true
+    };
+  case GET_SEARCH_DATA_RECEIVED:
+    return {
+      loading: false,             // set loading to false
+      campgrounds: action.data.campgrounds, // update campgrounds array with reponse data
+    };
+  case GET_SEARCH_DATA_ERROR:
+    return {
+      ...state, 
+      error: action.error,
+      loading: false,
+    };
     default:
       return state;
     }
